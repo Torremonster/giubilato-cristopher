@@ -16,6 +16,7 @@ export default function HorizontalScroll({ slides }: HorizontalScrollProps) {
   const [current, setCurrent] = useState(0);
   const [direction, setDirection] = useState(0);
   const scrollLock = useRef(false);
+  const touchStart = useRef<{ x: number; y: number } | null>(null);
 
   const goTo = useCallback(
     (next: number) => {
@@ -32,6 +33,33 @@ export default function HorizontalScroll({ slides }: HorizontalScrollProps) {
     (e: React.WheelEvent) => {
       if (e.deltaY > 30) goTo(current + 1);
       else if (e.deltaY < -30) goTo(current - 1);
+    },
+    [current, goTo]
+  );
+
+  const handleTouchStart = useCallback((e: React.TouchEvent) => {
+    touchStart.current = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+  }, []);
+
+  const handleTouchEnd = useCallback(
+    (e: React.TouchEvent) => {
+      if (!touchStart.current) return;
+      const dx = e.changedTouches[0].clientX - touchStart.current.x;
+      const dy = e.changedTouches[0].clientY - touchStart.current.y;
+      const absDx = Math.abs(dx);
+      const absDy = Math.abs(dy);
+      // Require a minimum swipe of 40px and mostly horizontal or vertical
+      if (Math.max(absDx, absDy) < 40) return;
+      if (absDy >= absDx) {
+        // Vertical swipe: up = next, down = prev
+        if (dy < 0) goTo(current + 1);
+        else goTo(current - 1);
+      } else {
+        // Horizontal swipe: left = next, right = prev
+        if (dx < 0) goTo(current + 1);
+        else goTo(current - 1);
+      }
+      touchStart.current = null;
     },
     [current, goTo]
   );
@@ -56,7 +84,7 @@ export default function HorizontalScroll({ slides }: HorizontalScrollProps) {
   };
 
   return (
-    <div className="relative w-full h-screen overflow-hidden" onWheel={handleWheel}>
+    <div className="relative w-full h-screen overflow-hidden touch-none" onWheel={handleWheel} onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
       {/* Slides */}
       <AnimatePresence initial={false} custom={direction} mode="wait">
         <motion.div

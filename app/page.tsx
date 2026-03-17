@@ -91,63 +91,57 @@ function HeroSlide() {
 function AboutSlide() {
   return (
     <div className="flex flex-col items-center justify-center text-center px-6 max-w-3xl mx-auto gap-8 select-none">
-      <div className="rounded-2xl bg-black/50 backdrop-blur-sm border border-white/5 px-8 py-10 md:px-14 md:py-14 flex flex-col items-center gap-8">
-        <motion.p
-          custom={0}
-          variants={fadeUp}
-          initial="hidden"
-          animate="show"
-          className="text-yellow-400/60 text-xs tracking-[0.5em] uppercase"
-          style={headingFont}
-        >
-          Chi Siamo
-        </motion.p>
+      <motion.p
+        custom={0}
+        variants={fadeUp}
+        initial="hidden"
+        animate="show"
+        className="text-yellow-400/60 text-xs tracking-[0.5em] uppercase"
+        style={headingFont}
+      >
+        Chi Siamo
+      </motion.p>
 
-        <motion.h2
-          custom={1}
-          variants={fadeUp}
-          initial="hidden"
-          animate="show"
-          className="text-white font-bold uppercase leading-tight"
+      <motion.h2
+        custom={1}
+        variants={fadeUp}
+        initial="hidden"
+        animate="show"
+        className="text-white font-bold uppercase leading-tight"
+        style={{
+          ...headingFont,
+          fontSize: "clamp(2rem, 6vw, 5rem)",
+          textShadow: "0 0 40px rgba(255,230,0,0.2)",
+          letterSpacing: "-0.03em",
+        }}
+      >
+        Passione e competenza
+        <br />
+        <span
           style={{
-            ...headingFont,
-            fontSize: "clamp(2rem, 6vw, 5rem)",
-            textShadow: "0 0 40px rgba(255,230,0,0.2)",
-            letterSpacing: "-0.03em",
+            WebkitTextStroke: "1.5px #ffe600",
+            color: "transparent",
           }}
         >
-          Passione e competenza
-          <br />
-          <span
-            style={{
-              WebkitTextStroke: "1.5px #ffe600",
-              color: "transparent",
-            }}
-          >
-            dal primo giorno.
-          </span>
-        </motion.h2>
+          dal primo giorno.
+        </span>
+      </motion.h2>
 
-        <motion.p
-          custom={2}
-          variants={fadeUp}
-          initial="hidden"
-          animate="show"
-          className="text-white/50 text-base md:text-lg leading-relaxed max-w-xl font-light"
-        >
+      <motion.div
+        custom={2}
+        variants={fadeUp}
+        initial="hidden"
+        animate="show"
+        className="rounded-2xl bg-black/50 backdrop-blur-sm border border-white/5 px-8 py-6 md:px-14 md:py-8 flex flex-col items-center gap-6"
+      >
+        <p className="text-white/50 text-base md:text-lg leading-relaxed max-w-xl font-light">
           Con oltre <span className="text-yellow-400 font-semibold">15 anni di esperienza</span> nel
           settore elettrico, Giubilato Cristopher offre soluzioni su misura per
           privati e aziende. Dal 2009 portiamo professionalità, affidabilità e
           cura del dettaglio in ogni cantiere.
-        </motion.p>
+        </p>
 
-        <motion.div
-          custom={3}
-          variants={fadeUp}
-          initial="hidden"
-          animate="show"
-          className="flex gap-10 mt-2"
-        >
+        <div className="flex gap-10 mt-2">
           {[
             { value: "15+", label: "Anni di attività" },
             { value: "500+", label: "Progetti completati" },
@@ -165,8 +159,8 @@ function AboutSlide() {
               </span>
             </div>
           ))}
-        </motion.div>
-      </div>
+        </div>
+      </motion.div>
     </div>
   );
 }

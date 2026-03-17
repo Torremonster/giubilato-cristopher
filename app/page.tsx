@@ -91,80 +91,82 @@ function HeroSlide() {
 function AboutSlide() {
   return (
     <div className="flex flex-col items-center justify-center text-center px-6 max-w-3xl mx-auto gap-8 select-none">
-      <motion.p
-        custom={0}
-        variants={fadeUp}
-        initial="hidden"
-        animate="show"
-        className="text-yellow-400/60 text-xs tracking-[0.5em] uppercase"
-        style={headingFont}
-      >
-        Chi Siamo
-      </motion.p>
+      <div className="rounded-2xl bg-black/50 backdrop-blur-sm border border-white/5 px-8 py-10 md:px-14 md:py-14 flex flex-col items-center gap-8">
+        <motion.p
+          custom={0}
+          variants={fadeUp}
+          initial="hidden"
+          animate="show"
+          className="text-yellow-400/60 text-xs tracking-[0.5em] uppercase"
+          style={headingFont}
+        >
+          Chi Siamo
+        </motion.p>
 
-      <motion.h2
-        custom={1}
-        variants={fadeUp}
-        initial="hidden"
-        animate="show"
-        className="text-white font-bold uppercase leading-tight"
-        style={{
-          ...headingFont,
-          fontSize: "clamp(2rem, 6vw, 5rem)",
-          textShadow: "0 0 40px rgba(255,230,0,0.2)",
-          letterSpacing: "-0.03em",
-        }}
-      >
-        Passione e competenza
-        <br />
-        <span
+        <motion.h2
+          custom={1}
+          variants={fadeUp}
+          initial="hidden"
+          animate="show"
+          className="text-white font-bold uppercase leading-tight"
           style={{
-            WebkitTextStroke: "1.5px #ffe600",
-            color: "transparent",
+            ...headingFont,
+            fontSize: "clamp(2rem, 6vw, 5rem)",
+            textShadow: "0 0 40px rgba(255,230,0,0.2)",
+            letterSpacing: "-0.03em",
           }}
         >
-          dal primo giorno.
-        </span>
-      </motion.h2>
+          Passione e competenza
+          <br />
+          <span
+            style={{
+              WebkitTextStroke: "1.5px #ffe600",
+              color: "transparent",
+            }}
+          >
+            dal primo giorno.
+          </span>
+        </motion.h2>
 
-      <motion.p
-        custom={2}
-        variants={fadeUp}
-        initial="hidden"
-        animate="show"
-        className="text-white/50 text-base md:text-lg leading-relaxed max-w-xl font-light"
-      >
-        Con oltre <span className="text-yellow-400 font-semibold">15 anni di esperienza</span> nel
-        settore elettrico, Giubilato Cristopher offre soluzioni su misura per
-        privati e aziende. Dal 2009 portiamo professionalità, affidabilità e
-        cura del dettaglio in ogni cantiere.
-      </motion.p>
+        <motion.p
+          custom={2}
+          variants={fadeUp}
+          initial="hidden"
+          animate="show"
+          className="text-white/50 text-base md:text-lg leading-relaxed max-w-xl font-light"
+        >
+          Con oltre <span className="text-yellow-400 font-semibold">15 anni di esperienza</span> nel
+          settore elettrico, Giubilato Cristopher offre soluzioni su misura per
+          privati e aziende. Dal 2009 portiamo professionalità, affidabilità e
+          cura del dettaglio in ogni cantiere.
+        </motion.p>
 
-      <motion.div
-        custom={3}
-        variants={fadeUp}
-        initial="hidden"
-        animate="show"
-        className="flex gap-10 mt-2"
-      >
-        {[
-          { value: "15+", label: "Anni di attività" },
-          { value: "500+", label: "Progetti completati" },
-          { value: "100%", label: "Clienti soddisfatti" },
-        ].map((stat) => (
-          <div key={stat.label} className="flex flex-col items-center gap-1">
-            <span
-              className="font-bold text-yellow-400"
-              style={{ ...headingFont, fontSize: "clamp(1.5rem, 4vw, 2.5rem)" }}
-            >
-              {stat.value}
-            </span>
-            <span className="text-white/40 text-xs tracking-widest uppercase" style={headingFont}>
-              {stat.label}
-            </span>
-          </div>
-        ))}
-      </motion.div>
+        <motion.div
+          custom={3}
+          variants={fadeUp}
+          initial="hidden"
+          animate="show"
+          className="flex gap-10 mt-2"
+        >
+          {[
+            { value: "15+", label: "Anni di attività" },
+            { value: "500+", label: "Progetti completati" },
+            { value: "100%", label: "Clienti soddisfatti" },
+          ].map((stat) => (
+            <div key={stat.label} className="flex flex-col items-center gap-1">
+              <span
+                className="font-bold text-yellow-400"
+                style={{ ...headingFont, fontSize: "clamp(1.5rem, 4vw, 2.5rem)" }}
+              >
+                {stat.value}
+              </span>
+              <span className="text-white/40 text-xs tracking-widest uppercase" style={headingFont}>
+                {stat.label}
+              </span>
+            </div>
+          ))}
+        </motion.div>
+      </div>
     </div>
   );
 }
